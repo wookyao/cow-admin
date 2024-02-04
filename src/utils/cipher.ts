@@ -1,6 +1,5 @@
-import CryptoJS from 'crypto-js'
-// import { decrypt as aesDecrypt, encrypt as aesEncrypt } from 'crypto-js/aes'
-import { UTF8 } from 'crypto-js/enc-utf8'
+import { decrypt as aesDecrypt, encrypt as aesEncrypt } from 'crypto-js/aes'
+import Utf8 from 'crypto-js/enc-utf8'
 import CFB from 'crypto-js/mode-cfb'
 import Pkcs7 from 'crypto-js/pad-pkcs7'
 import Base64 from 'crypto-js/enc-base64'
@@ -34,11 +33,11 @@ class AESCipher implements Cipher {
 	private iv: string
 
 	constructor({ key, iv }: Salt) {
-		this.key = key
-		this.iv = iv
+		this.key = MD5(key).toString()
+		this.iv = MD5(iv).toString()
 	}
 
-	get Options() {
+	get params() {
 		return {
 			mode: CFB,
 			padding: Pkcs7,
@@ -48,12 +47,12 @@ class AESCipher implements Cipher {
 
 	encrypt(plainText: string) {
 		// 实现加密逻辑
-		return CryptoJS.AES.encrypt(plainText, this.key).toString()
+		return aesEncrypt(plainText, this.key, this.params).toString()
 	}
 	decrypt(cipherText: string) {
-		console.log(cipherText, 'encrypted1')
 		// 实现解密逻辑
-		return CryptoJS.AES.decrypt(cipherText, this.key).toString(UTF8)
+		const decrypt = aesDecrypt(cipherText, this.key, this.params).toString(Utf8)
+		return decrypt.toString()
 	}
 }
 
@@ -72,11 +71,11 @@ class Base64Cipher implements Cipher {
 	}
 
 	encrypt(plainText: string): string {
-		return UTF8.parse(plainText).toString(Base64)
+		return Utf8.parse(plainText).toString(Base64)
 	}
 
 	decrypt(cipherText: string): string {
-		return Base64.parse(cipherText).toString(UTF8)
+		return Base64.parse(cipherText).toString(Utf8)
 	}
 }
 
