@@ -22,7 +22,7 @@ const cipher: Cipher = CipherFactory.genAes(SLAT_DATA)
 // 自定义 序列化 函数
 function serializer(openEncryption: boolean): Serializer {
 	// 使用 加密
-	if (!openEncryption) {
+	if (openEncryption) {
 		return {
 			// 序列化 -> 加密
 			serialize: (value: StateTree) => {

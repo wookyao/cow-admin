@@ -1,9 +1,6 @@
 /*
+ * 用户 store
  * @Author: xu.yao
- * @Date: 2024-02-02
- * @LastEditors: xu.yao xu.yao@hongpucorp.com
- * @LastEditTime: 2024-02-02 15:44:25
- * @Description: 用户 store
  */
 import { defineStore } from 'pinia'
 
@@ -27,8 +24,8 @@ export const useUserStore = defineStore('user', {
 	}),
 
 	actions: {
-		saveToken() {
-			this.token = '123'
+		saveToken(val: string) {
+			this.token = val
 		},
 	},
 	persist: true,

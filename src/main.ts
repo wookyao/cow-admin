@@ -13,6 +13,8 @@ function bootstrap() {
 	// 注册路由
 	setupRouter(app)
 
+	// 注册指令
+
 	// 挂载
 	app.mount('#app')
 }

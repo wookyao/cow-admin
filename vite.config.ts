@@ -1,11 +1,11 @@
-import path from 'path';
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import AutoImport from 'unplugin-auto-import/vite';
-import { vitePluginForArco } from '@arco-plugins/vite-vue';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
+import path from 'path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import AutoImport from 'unplugin-auto-import/vite'
+import { vitePluginForArco } from '@arco-plugins/vite-vue'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -39,21 +39,13 @@ export default defineConfig({
 				replacement: path.resolve(__dirname, 'src'),
 			},
 			{
-				find: 'Components',
-				replacement: path.resolve(__dirname, 'src/components'),
-			},
-			{
-				find: 'Pages',
-				replacement: path.resolve(__dirname, 'src/pages'),
-			},
-			{
-				find: 'Store',
-				replacement: path.resolve(__dirname, 'src/store'),
-			},
-			{
-				find: 'Apis',
-				replacement: path.resolve(__dirname, 'src/apis'),
+				find: '~StoreMod',
+				replacement: path.resolve(__dirname, 'src/store/modules'),
 			},
 		],
 	},
-});
+	// 服务
+	server: {
+		port: 9527,
+	},
+})
