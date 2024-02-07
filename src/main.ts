@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
+import { setupGlobalComponents } from '@/components'
+import 'virtual:svg-icons-register'
 import App from './App.vue'
 
 // 创建 App 实列
@@ -12,6 +14,9 @@ function bootstrap() {
 
 	// 注册路由
 	setupRouter(app)
+
+	// 注册全局组件
+	setupGlobalComponents(app)
 
 	// 注册指令
 
