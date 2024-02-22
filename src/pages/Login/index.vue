@@ -32,6 +32,8 @@
 </template>
 
 <script lang="ts" setup name="LoginScreen">
+import { Message } from '@arco-design/web-vue'
+
 interface FormData {
 	username: string
 	password: string
@@ -42,11 +44,32 @@ const formData = reactive<FormData>({
 	password: '',
 })
 
+// 提交验证
+const validate: () => boolean = () => {
+	if (!formData.username) {
+		Message.error('用户名称不能为空')
+		return false
+	}
+
+	// 判断用户名 是不是手机号码 严格判断
+	if (!/^1[3456789]\d{9}$/.test(formData.username)) {
+		Message.error('手机号码格式错误')
+		return false
+	}
+
+	if (!formData.password) {
+		Message.error('登录密码不能为空')
+		return false
+	}
+	return true
+}
+
 // 登录
 const login = () => {
-	if (formData.username && formData.password) {
-		console.log('login')
-	}
+	// 验证
+	if (!validate()) return
+
+	console.log('login')
 }
 </script>
 
