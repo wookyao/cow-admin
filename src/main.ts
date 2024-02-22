@@ -4,6 +4,7 @@ import { setupRouter } from '@/router'
 import { setupGlobalComponents } from '@/components'
 import 'virtual:svg-icons-register'
 import App from './App.vue'
+import '@/style/index.less'
 
 // 创建 App 实列
 const app = createApp(App)
