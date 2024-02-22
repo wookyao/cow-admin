@@ -5,13 +5,21 @@
 
 		<div class="form-card">
 			<div class="form-item">
-				<a-input placeholder="输入手机号"></a-input>
+				<a-input
+					v-model="formData.username"
+					placeholder="输入手机号"
+					allow-clear
+				></a-input>
 			</div>
 			<div class="form-item">
-				<a-input placeholder="输入验证码"></a-input>
+				<a-input-password
+					v-model="formData.password"
+					placeholder="输入登录密码"
+					allow-clear
+				></a-input-password>
 			</div>
 
-			<div class="form-submit">登录</div>
+			<div class="form-submit" @click="login">登录</div>
 
 			<div class="form-tips">
 				<span class="tips-label">第三方扫码登录</span>
@@ -23,7 +31,24 @@
 	</div>
 </template>
 
-<script lang="ts" setup name="LoginScreen"></script>
+<script lang="ts" setup name="LoginScreen">
+interface FormData {
+	username: string
+	password: string
+}
+
+const formData = reactive<FormData>({
+	username: '',
+	password: '',
+})
+
+// 登录
+const login = () => {
+	if (formData.username && formData.password) {
+		console.log('login')
+	}
+}
+</script>
 
 <style lang="less" scoped>
 .login {

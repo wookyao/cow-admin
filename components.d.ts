@@ -10,6 +10,8 @@ declare module 'vue' {
 		AButton: (typeof import('@arco-design/web-vue'))['Button']
 		ADivider: (typeof import('@arco-design/web-vue'))['Divider']
 		AInput: (typeof import('@arco-design/web-vue'))['Input']
+		AInputPassword: (typeof import('@arco-design/web-vue'))['InputPassword']
+		ATable: (typeof import('@arco-design/web-vue'))['Table']
 		RouterLink: (typeof import('vue-router'))['RouterLink']
 		RouterView: (typeof import('vue-router'))['RouterView']
 		SvgIcon: (typeof import('./src/components/SvgIcon/index.vue'))['default']
