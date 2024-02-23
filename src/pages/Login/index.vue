@@ -19,7 +19,14 @@
 				></a-input-password>
 			</div>
 
-			<div class="form-submit" @click="login">登录</div>
+			<a-button
+				class="form-submit"
+				type="primary"
+				size="large"
+				long
+				@click="login"
+				>登录</a-button
+			>
 
 			<div class="form-tips">
 				<span class="tips-label">第三方扫码登录</span>
@@ -68,8 +75,6 @@ const validate: () => boolean = () => {
 const login = () => {
 	// 验证
 	if (!validate()) return
-
-	console.log('login')
 }
 </script>
 
@@ -77,7 +82,7 @@ const login = () => {
 .login {
 	&-screen {
 		height: 100vh;
-		background-color: var(--color-ls-bg);
+		background-color: var(--ui-background);
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -87,12 +92,12 @@ const login = () => {
 			margin-bottom: 50px;
 			font-size: 106px;
 			font-weight: 700;
-			color: #121212;
+			color: var(--color-text-1);
 			letter-spacing: 5px;
 		}
 		.sub-title {
 			font-size: 36px;
-			font-size: #000;
+			color: var(--color-text-2);
 			letter-spacing: 3px;
 		}
 	}
@@ -110,15 +115,6 @@ const login = () => {
 
 	&-submit {
 		margin-top: 40px;
-		height: 36px;
-		line-height: 36px;
-		background-color: var(--color-ls-black);
-		color: #fff;
-		text-align: center;
-		cursor: pointer;
-		&:hover {
-			background-color: rgba(#000, 0.75);
-		}
 	}
 
 	&-tips {
@@ -126,7 +122,7 @@ const login = () => {
 		align-items: center;
 		justify-content: space-between;
 		margin-top: 90px;
-		color: #4e5969;
+		color: var(--color-text-3);
 
 		.tips-label {
 			flex: 1;

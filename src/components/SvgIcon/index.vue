@@ -13,20 +13,20 @@ const props = withDefaults(defineProps<SvgIconProps>(), {
 	size: 16,
 })
 
-const SvgIcon = (props: SvgIconProps) => {
+const style = computed(() => {
+	const size = String(props.size).endsWith('px')
+		? props.size
+		: `${props.size}px`
+
+	return {
+		'--svg-icon-color': `${props.color}`,
+		'--svg-icon-size': size,
+	}
+})
+
+const SvgIcon = (props: SvgIconProps, style) => {
 	const svgClass = computed(() => {
 		return `svg-icon icon-${props.name}`
-	})
-
-	const style = computed(() => {
-		const size = String(props.size).endsWith('px')
-			? props.size
-			: `${props.size}px`
-
-		return {
-			'--svg-icon-color': `${props.color}`,
-			'--svg-icon-size': size,
-		}
 	})
 
 	return () => (
@@ -38,7 +38,7 @@ const SvgIcon = (props: SvgIconProps) => {
 </script>
 
 <template>
-	<component :is="SvgIcon(props)" />
+	<component :is="SvgIcon(props, style)" />
 </template>
 
 <style scoped>

@@ -1,13 +1,15 @@
 body {
-	--color-screen-bg: #f8f8f8;
+	// 整站背景色
+	--ui-background: #fff;
+	// 舞台色
+	--ui-screen-bg: #f6f7fb;
 
-	// 登录页
-	--color-ls-bg: #fff;
-	--color-ls-black: #121212;
+	--ui-primary: rgb(var(--primary-6));
 }
 
-body[theme-dark] {
-	--color-screen-bg: #1a1a1a;
-	--color-ls-bg: #1a1a1a;
-	--color-ls-black: #969696;
+body[theme='dark'] {
+	// 整站背景色
+	--ui-background: #1a1a1a;
+	// 舞台色
+	--ui-screen-bg: #2a2a2b;
 }

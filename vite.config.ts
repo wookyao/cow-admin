@@ -3,8 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
@@ -15,18 +13,10 @@ export default defineConfig({
 		vueJsx(),
 		AutoImport({
 			imports: ['vue', 'vue-router'],
-			resolvers: [ArcoResolver()],
 			// 解决eslint报错问题
 			eslintrc: {
 				enabled: true,
 			},
-		}),
-		Components({
-			resolvers: [
-				ArcoResolver({
-					sideEffect: true,
-				}),
-			],
 		}),
 		// arco 自动导入
 		// vitePluginForArco({

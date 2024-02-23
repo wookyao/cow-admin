@@ -12,6 +12,7 @@ const commonRoutes: RouteRecordRaw[] = [
 		component: () => import('@/pages/Login/index.vue'),
 		meta: {
 			title: '登录',
+			layout: 'full-page',
 		},
 	},
 	{
@@ -19,11 +20,24 @@ const commonRoutes: RouteRecordRaw[] = [
 		component: () => import('@/pages/Register/index.vue'),
 		meta: {
 			title: '注册',
+			layout: 'full-page',
+		},
+	},
+	{
+		path: '/dashboard',
+		component: () => import('@/pages/Dashboard/index.vue'),
+		meta: {
+			title: '仪表盘',
+			layout: 'default',
 		},
 	},
 	{
 		path: '/:pathMatch(.*)*',
 		component: () => import('@/pages/404/index.vue'),
+		meta: {
+			title: '资源不存在',
+			layout: 'full-page',
+		},
 	},
 ]
 
