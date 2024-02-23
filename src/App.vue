@@ -1,8 +1,6 @@
 <template>
 	<Layout>
 		<RouterView />
-
-		<a-button></a-button>
 	</Layout>
 </template>
 

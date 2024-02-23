@@ -1,5 +1,7 @@
 <template>
-	<component :is="LayoutComponent" v-if="!isFullPage"></component>
+	<component :is="LayoutComponent" v-if="!isFullPage">
+		<slot></slot>
+	</component>
 	<slot v-if="isFullPage"></slot>
 </template>
 

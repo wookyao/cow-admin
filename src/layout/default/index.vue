@@ -3,7 +3,9 @@
 		<CHeader />
 
 		<div class="app-content">
-			<div class="app-screen"></div>
+			<div class="app-screen">
+				<slot></slot>
+			</div>
 		</div>
 	</div>
 </template>
@@ -36,6 +38,7 @@ import CHeader from './components/header.vue'
 	}
 
 	&-screen {
+		padding: 16px;
 		flex: 1;
 		background-color: var(--ui-screen-bg);
 		border-radius: var(--border-radius);
