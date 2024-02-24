@@ -31,14 +31,6 @@ const commonRoutes: RouteRecordRaw[] = [
 			layout: 'default',
 		},
 	},
-	{
-		path: '/:pathMatch(.*)*',
-		component: () => import('@/pages/404/index.vue'),
-		meta: {
-			title: '资源不存在',
-			layout: 'full-page',
-		},
-	},
 ]
 
 export default commonRoutes

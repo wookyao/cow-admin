@@ -9,6 +9,7 @@
 					:key="menu.key"
 					class="menu-item"
 					:class="{ active: activeNav === menu.key }"
+					@click="handlerNav(menu)"
 				>
 					{{ menu.label }}
 				</div>
@@ -38,11 +39,20 @@
 
 <script lang="ts" setup name="LayoutDefaultHeader">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useThemeStore } from '@/store/modules/theme.ts'
+
+interface NavItem {
+	label: string
+	path: string
+	key: string
+}
+
+const $router = useRouter()
 
 const themeStore = useThemeStore()
 
-const navList = [
+const navList: NavItem[] = [
 	{
 		label: '工作台',
 		path: '/dashboard',
@@ -76,12 +86,19 @@ const handlerChangeThemeMode = () => {
 	themeStore.switchMode()
 }
 
+const handlerNav = (menu: NavItem) => {
+	activeNav.value = menu.key
+	$router.push(menu.path)
+}
 // 设置主题模式
 themeStore.setThemeMode()
 </script>
 
 <style lang="less" scoped>
 .app-header {
+	--header-height: 56px;
+	--header-gutter: 12px 24px;
+
 	width: 100%;
 	display: flex;
 	align-items: center;

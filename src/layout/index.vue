@@ -18,14 +18,15 @@ const isFullPage = computed(() => {
 })
 
 const LayoutComponent = computed(() => {
-	let component = null
+	let component
 
 	switch (layoutName.value) {
-		case 'full-page':
+		case 'marketing-page':
+			component = defineAsyncComponent(() => import(`./marketing.vue`))
 			break
 
 		default:
-			component = defineAsyncComponent(() => import(`./default/index.vue`))
+			component = defineAsyncComponent(() => import(`./default.vue`))
 			break
 	}
 
